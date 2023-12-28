@@ -40,6 +40,7 @@ class EggTimerFragment : Fragment() {
         return binding.root
     }
 
+    // create notification channel
     private fun createChannel(channelId: String, channelName: String) {
         // TODO: Step 1.6 START create a channel
 
