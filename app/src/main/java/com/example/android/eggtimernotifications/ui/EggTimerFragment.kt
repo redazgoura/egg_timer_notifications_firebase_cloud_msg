@@ -34,7 +34,7 @@ class EggTimerFragment : Fragment() {
         binding.lifecycleOwner = this.viewLifecycleOwner
 
         /**
-         * create a channel */
+         * call  createChannel to create a notification  */
 
         createChannel(
             getString(R.string.egg_notification_channel_id),
