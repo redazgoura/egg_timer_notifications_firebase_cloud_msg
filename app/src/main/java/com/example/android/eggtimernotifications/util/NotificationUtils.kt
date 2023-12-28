@@ -68,7 +68,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         .setContentTitle(applicationContext.getString(R.string.notification_title))
         .setContentText(messageBody)
 
-    //setting the contentIntent
+        //setting the contentIntent
         .setContentIntent(contentPendingIntent)
         .setAutoCancel(true) // the notification dismisses itself as it takes you to the app
 
@@ -83,4 +83,8 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
 
 }
 
-// TODO: Step 1.14 Cancel all notifications
+
+    //Cancel all notifications
+    fun NotificationManager.cancelNotification(){
+        cancelAll()
+    }
