@@ -29,7 +29,7 @@ import com.example.android.eggtimernotifications.receiver.SnoozeReceiver
 // Notification ID.
 private val NOTIFICATION_ID = 0
 private val REQUEST_CODE = 0
-private val FLAGS = 0
+private val FLAGS : Int = 0
 
 
 /**
@@ -62,7 +62,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         .bigLargeIcon(null) // so the large icon goes away when the notification is expanded
 
     /**
-     *  add snooze action
+     *  add snooze pending intent
      *  */
 
     val snoozeIntent = Intent(applicationContext, SnoozeReceiver::class.java)
@@ -70,7 +70,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         applicationContext,
         REQUEST_CODE,
         snoozeIntent,
-        FLAGS.toInt()
+        0
     )
 
     // Build the notification
@@ -98,10 +98,11 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         .addAction(
             R.drawable.egg_icon,
             applicationContext.getString(R.string.snooze),
-            snoozePendingIntent
+            snoozePendingIntent // used to trigger the right broadcast receiver when your action is clicked
         )
 
-        // TODO: Step 2.5 set priority
+        // set priority
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
 
     // Deliver the notification
     notify(NOTIFICATION_ID, builder.build())
