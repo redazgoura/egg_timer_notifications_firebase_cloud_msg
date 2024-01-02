@@ -29,7 +29,7 @@ import com.example.android.eggtimernotifications.receiver.SnoozeReceiver
 // Notification ID.
 private val NOTIFICATION_ID = 0
 private val REQUEST_CODE = 0
-private val FLAGS : Int = 0
+private val FLAGS = 0
 
 
 /**
@@ -70,7 +70,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         applicationContext,
         REQUEST_CODE,
         snoozeIntent,
-        0
+        FLAGS.toInt()
     )
 
     // Build the notification
