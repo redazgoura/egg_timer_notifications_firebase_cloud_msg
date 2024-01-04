@@ -1,6 +1,9 @@
 package com.example.android.eggtimernotifications
 
+import android.app.NotificationManager
 import android.util.Log
+import androidx.core.content.ContextCompat
+import com.example.android.eggtimernotifications.util.sendNotification
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -13,6 +16,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         remoteMessage?.data?.let {
             Log.d("RemoteMessage", "Msg data payload  : ${remoteMessage.data}")
+        }
+
+        // check if message contains notification payload
+        remoteMessage?.notification?.let {
+            Log.d("RemoteMessage", "Msg notification payload  : ${it.body}")
+            sendNotification(it.body!!)
         }
     }
 
@@ -32,6 +41,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     }
 
-
-
+    // create & show a simple notif containing the received FCM msg
+    private  fun sendNotification(messageBody : String){
+        val notificationManager = ContextCompat.getSystemService(
+            applicationContext,
+            NotificationManager::class.java
+        )
+        notificationManager!!.sendNotification(messageBody, applicationContext)
+    }
 }
