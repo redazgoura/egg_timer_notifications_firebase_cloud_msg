@@ -53,6 +53,7 @@ class EggTimerFragment : Fragment() {
         /**
          * call subTopic() */
         subTopic()
+
         return binding.root
     }
     // subscribe to a topic
@@ -66,7 +67,6 @@ class EggTimerFragment : Fragment() {
                 if(!task.isSuccessful){
                     msg = getString(R.string.message_subscribe_failed)
                 }
-
                 Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
             }
     }
